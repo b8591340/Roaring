@@ -8,7 +8,7 @@ public typealias RoaringStatistics = roaring_statistics_t
 /**
 * Swift wrapper for CRoaring (a C/C++ implementation at https://github.com/RoaringBitmap/CRoaring)
 */
-public class RoaringBitmap: Sequence, Equatable, CustomStringConvertible,
+public struct RoaringBitmap: Sequence, Equatable, CustomStringConvertible,
                            Hashable, ExpressibleByArrayLiteral  {
     var ptr: UnsafeMutablePointer<roaring_bitmap_t>
     public typealias Element = UInt32
@@ -53,16 +53,11 @@ public class RoaringBitmap: Sequence, Equatable, CustomStringConvertible,
         self.ptr = croaring.roaring_bitmap_of_ptr(values.count, values)!
     }
 
-    public required init(arrayLiteral: Element...) {
+    public init(arrayLiteral: Element...) {
         self.ptr = croaring.roaring_bitmap_create()!
         for i in arrayLiteral { add(i) }
 
     }
-
-    deinit {
-        self.free()
-    }
-
 
     /////////////////////////////////////////////////////////////////////////////
     ///                             OPERATORS                                 ///
