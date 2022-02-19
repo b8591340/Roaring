@@ -1,12 +1,12 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.0
 import PackageDescription
 
 let package = Package(
-    name: "SwiftRoaring",
+    name: "Roaring",
     products: [
         .library(name: "croaring", targets: ["croaring"]),
-        .library(name: "SwiftRoaring", targets: ["SwiftRoaring"]),
-        .library(name: "SwiftRoaringDynamic", type: .dynamic, targets: ["SwiftRoaring"])
+        .library(name: "Roaring", targets: ["Roaring"]),
+        .library(name: "RoaringDynamic", type: .dynamic, targets: ["Roaring"]),
     ],
     targets: [
         .target(
@@ -14,12 +14,12 @@ let package = Package(
             path: "./Sources/CRoaring"
         ),
         .target(
-            name: "SwiftRoaring",
-            dependencies:["croaring"]
+            name: "Roaring",
+            dependencies: ["croaring"]
         ),
         .testTarget(
-            name: "swiftRoaringTests",
-            dependencies:["SwiftRoaring"]
-        )
+            name: "RoaringTests",
+            dependencies: ["Roaring"]
+        ),
     ]
 )

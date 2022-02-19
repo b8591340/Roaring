@@ -1,5 +1,5 @@
 import XCTest
-@testable import SwiftRoaring
+@testable import Roaring
 
 
 extension swiftRoaringTests {
